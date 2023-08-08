@@ -6,22 +6,24 @@
 		body {
 			background: rgb(38,38,38);
 			margin: 0;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      color: #efefef;
 		}
 		#portfolio-container {
-      text-align: center;
       transition: margin-right 0.3s ease;
 		}
 		.web-example {
-			padding: 10px;
+	    position: relative;
+      width: fit-content;
+      margin: 0 auto;
+	    cursor: pointer;
 		}
 		.web-example>img {
-			max-width: 1000px;
 	    width: 100%;
-	    cursor: pointer;
 		}
 		#sidebar {
 	    width: 30%;
-	    background: rgb(56,56,56);
+	    background: #3a353f;
 	    height: 100%;
 	    position: fixed!important;
 	    z-index: 1;
@@ -30,33 +32,123 @@
 	    right: -30%;
       transition: right 0.3s ease;
 		}
+    #sidebar-title {
+      width: 100%;
+      background: black;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 22px;
+    }
+    #sidebar-description {
+      border-radius: 13px;
+      margin: 14px;
+      border: 1px solid #1f1c21;
+      padding: 9px 12px 12px 12px;
+      font-weight: lighter;
+      color: #dbdbdb;
+    }
+    #tags {
+      margin: 6px;
+    }
+    #tags>div {
+      border-radius: 20px;
+      padding: 3px 6px;
+      font-size: 10px;
+      margin: 0 3px;
+      display: inline-block;
+    }
+    #visit-site {
+      background: #895bb3;
+      border-radius: 5px;
+      margin: 15px auto;
+      width: fit-content;
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+    .overlay {
+      background: rgb(56 56 56 / 50%);
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      height: 100%;
+      opacity: 0%;
+      text-align: center;
+      transition: opacity 0.2s ease;
+    }
+    .overlay:hover {
+      opacity: 100%;
+    }
+    .overlay-type {
+      color: #aa9edc;
+    }
+    .overlay-text {
+      top: 50%;
+      width: fit-content;
+      position: absolute;
+      font-size: 2em;
+      background: #18181e69;
+      border-radius: 10px;
+      transform: translate(-50%, -50%);
+      padding: 17px 43px;
+      left: 50%;
+      text-wrap: nowrap;
+    }
 	</style>
 	<script>
     const data = {
       'eas': {
-        'company': 'European Auto Service'
+        'project': 'European Auto Service',
+        'type': 'website',
+        'description': "For a freelance job, I built this simple website using Wordpress—which was a requirement of the client's, so they could make small changes on their own without the need for a developer.<br><br>I stayed on top of deadlines and managed the client's expectations, keeping them abreast of progress, and ultimately delivering a site with which he was very satisfied.",
+        'tags': ['jQuery','HTML','CSS','Wordpress'],
+        'url': 'https://www.europeanautoreseda.com/'
       },
       'ksj': {
-        'company': 'Karine Sultan Jewelry'
+        'project': 'Karine Sultan Jewelry',
+        'type': 'website',
+        'description': "I redesigned multiple aspects of this website, changing its look and adding new features. I also wrote software that allowed the employees to make a specific set of changes to the underlying database.",
+        'tags': ['MySQL','javascript','HTML','CSS','Shopify'],
+        'url': 'https://www.karinesultan.com/'
       },
       'sgl': {
-        'company': 'Stargate Studios'
+        'project': 'Stargate Studios Library',
+        'type': 'website',
+        'description': "Although this project is still a work-in-progress, Stargate Studios' employees and clients are actively using it as a convenient way to access the company's vast stock footage library.<br><br>The site was originally created nearly 10 years ago, and it was unusable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, removing security vulnerabilities, improving frontend javascript performance, and adding cross-browser compatibility (it still doesn't work on iOS, but that will change soon).",
+        'tags': ['MySQL','jQuery','Backbone','node.js','HTML','CSS','Python','Bash'],
+        'url': 'http://library.stargatestudios.net/'
       }
     }
+    const tag_colors = {
+      'MySQL': [61,110,148],
+      'jQuery': [9,105,173],
+      'javascript': [168,21,21],
+      'Backbone': [74,112,192],
+      'node.js': [131,205,42],
+      'HTML': [220,74,37],
+      'CSS': [37,75,222],
+      'Python': [247,201,63],
+      'Bash': [177,59,145],
+      'Shopify': [149,191,71],
+      'Wordpress': [0,0,0]
+    }
     async function preloadImage(url) {
-      var img=new Image();
-      img.src=url;
+      var img = new Image();
+      img.src = url;
     }
     for (element in data) {
       preloadImage('img/'+element+'.png');
     }
-    document.addEventListener("DOMContentLoaded", function(event) { 
+    document.addEventListener('DOMContentLoaded', function(event) { 
       var html = '';
+      var data_count = Object.keys(data).length;
+      var element_height = 100/data_count;
       for (element in data) {
-        html += '<div class="web-example"><img src="img/'+element+'.png" onclick="click_sidebar(\''+element+'\')"></div>';
+        html += '<div class="web-example" style="height: '+element_height+'%" onclick="click_sidebar(\''+element+'\')"><div class="overlay"><div class="overlay-text"><span class="overlay-type">'+data[element]['type']+': </span>'+data[element]['project']+'</div></div><img src="img/'+element+'.png"></div>';
       }
-      console.log(html);
-      document.getElementById("portfolio-container").innerHTML = html;
+      document.querySelectorAll('.web-example').forEach(web_example => {
+        web_example.style.height = (100/elements)+'%';
+      });
+      document.getElementById('portfolio-container').innerHTML = html;
     });
     var sidebar_open = false;
     var current_sidebar = null;
@@ -76,15 +168,32 @@
       current_sidebar = id;
 		}
     function load_sidebar(id) {
-      document.getElementById("sidebar").innerHTML = data[id]['company'];
+      document.getElementById('sidebar-title').innerHTML = data[id]['project'];
+      document.getElementById('sidebar-description').innerHTML = data[id]['description'];
+      document.getElementById('visit-site').onclick = function(){window.open(data[id]['url'], '_blank').focus()};
+      var tag_html = '';
+      data[id]['tags'].forEach(tag => {
+        var font_color = '#efefef';
+        var rgb_bkgd = '210,105,3'
+        if (tag_colors[tag]) {
+          rgb_bkgd = tag_colors[tag].toString();
+          if( tag_colors[tag][0]*0.299 + tag_colors[tag][1]*0.587 + tag_colors[tag][2]*0.114 > 136) {
+            font_color = '#101010';
+          }
+        }
+        tag_html += '<div style="color:'+font_color+';background:rgb('+rgb_bkgd+')">'+tag+'</div>'
+      });
+      document.getElementById('tags').innerHTML = tag_html;
     }
     function open_sidebar() {
-      document.getElementById("portfolio-container").style.marginRight = "30%";
-        document.getElementById("sidebar").style.right = "0";
+      document.getElementById('portfolio-container').style.marginRight = '30%';
+      document.getElementById('sidebar').style.right = '0';
+      document.getElementById('sidebar').style.boxShadow = '0 0 24px 5px #0000007a';
     }
     function close_sidebar() {
-      document.getElementById("portfolio-container").style.marginRight = "0";
-      document.getElementById("sidebar").style.right = "-30%";
+      document.getElementById('portfolio-container').style.marginRight = '0';
+      document.getElementById('sidebar').style.right = '-30%';
+      document.getElementById('sidebar').style.boxShadow = 'none';
     }
 	</script>
 </head>
@@ -92,5 +201,10 @@
 	<header>
 	</header>
 	<div id="portfolio-container"></div>
-	<div id="sidebar"></div>
+	<div id="sidebar">
+   <div id="sidebar-title"></div>
+   <div id="tags"></div>
+   <div id="visit-site">Visit Site</div>
+   <div id="sidebar-description"></div>
+  </div>
 </body>

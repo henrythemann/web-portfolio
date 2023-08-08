@@ -1,0 +1,96 @@
+<head>
+	<style type="text/css">
+		html, body {
+		  height: 100%;
+		}
+		body {
+			background: rgb(38,38,38);
+			margin: 0;
+		}
+		#portfolio-container {
+      text-align: center;
+      transition: margin-right 0.3s ease;
+		}
+		.web-example {
+			padding: 10px;
+		}
+		.web-example>img {
+			max-width: 1000px;
+	    width: 100%;
+	    cursor: pointer;
+		}
+		#sidebar {
+	    width: 30%;
+	    background: rgb(56,56,56);
+	    height: 100%;
+	    position: fixed!important;
+	    z-index: 1;
+	    overflow: auto;
+	    top: 0;
+	    right: -30%;
+      transition: right 0.3s ease;
+		}
+	</style>
+	<script>
+    const data = {
+      'eas': {
+        'company': 'European Auto Service'
+      },
+      'ksj': {
+        'company': 'Karine Sultan Jewelry'
+      },
+      'sgl': {
+        'company': 'Stargate Studios'
+      }
+    }
+    async function preloadImage(url) {
+      var img=new Image();
+      img.src=url;
+    }
+    for (element in data) {
+      preloadImage('img/'+element+'.png');
+    }
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      var html = '';
+      for (element in data) {
+        html += '<div class="web-example"><img src="img/'+element+'.png" onclick="click_sidebar(\''+element+'\')"></div>';
+      }
+      console.log(html);
+      document.getElementById("portfolio-container").innerHTML = html;
+    });
+    var sidebar_open = false;
+    var current_sidebar = null;
+		function click_sidebar(id) {
+      if (sidebar_open) {
+        if (current_sidebar == id) {
+          close_sidebar();
+          sidebar_open = false;
+        } else {
+          load_sidebar(id);
+        }
+      } else {
+        sidebar_open = true;
+        load_sidebar(id);
+        open_sidebar();
+      }
+      current_sidebar = id;
+		}
+    function load_sidebar(id) {
+      document.getElementById("sidebar").innerHTML = data[id]['company'];
+    }
+    function open_sidebar() {
+      document.getElementById("portfolio-container").style.marginRight = "30%";
+        document.getElementById("sidebar").style.right = "0";
+    }
+    function close_sidebar() {
+      document.getElementById("portfolio-container").style.marginRight = "0";
+      document.getElementById("sidebar").style.right = "-30%";
+    }
+	</script>
+</head>
+<body>
+	<header>
+	</header>
+	<div id="portfolio-container"></div>
+	<div id="sidebar"></div>
+</body>

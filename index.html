@@ -1,4 +1,6 @@
 <head>
+  <title>Henry Mann Portfolio</title>
+  <link rel="icon" href="bucket.ico">
 	<style type="text/css">
 		html, body {
 		  height: 100%;
@@ -14,12 +16,9 @@
 		}
 		.web-example {
 	    position: relative;
-      width: fit-content;
-      margin: 0 auto;
+      width: 100%;
 	    cursor: pointer;
-		}
-		.web-example>img {
-	    width: 100%;
+      background-size: cover;
 		}
 		#sidebar {
 	    width: 30%;
@@ -96,10 +95,23 @@
 	</style>
 	<script>
     const data = {
+      'sgl': {
+        'project': 'Stargate Studios Library',
+        'type': 'website',
+        'description': "Although this project is still a work-in-progress, Stargate Studios' employees and clients are actively using the site as a convenient way to access the company's vast stock footage library.<br><br>The site was built nearly 10 years ago, and it was barely usable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, removing security vulnerabilities, improving frontend javascript performance, and optimizing the workflow with Python and bash scripts. There are still many bugs to fix (e.g. still doesn't work on iOS) and features to add (like search filtering), but it's come a long way in terms of reliability and usability since I started on it.",
+        'tags': ['MySQL','jQuery','Backbone','node.js','HTML','CSS','Python','Bash'],
+        'url': 'http://library.stargatestudios.net/'
+      },
+      'sgc': {
+        'project': 'Stargate PanoCam',
+        'type': 'desktop app',
+        'description': 'In collaboration with Sony, I built a C++ camera control app which has increased virtual production plate shooting efficiency by 30% and substantially reduced the chance of operator error.<br><br>Built the core functionality in only two months. In the following 6 months, I’ve added 20 major features.<br><br>Implemented asynchronous serial communication to allow for GPS logging, which allows us to catalog every shoot by location, making it easier to sell footage to clients',
+        'tags': ['C++', 'wxWidgets', 'Bash']
+      },
       'eas': {
         'project': 'European Auto Service',
         'type': 'website',
-        'description': "For a freelance job, I built this simple website using Wordpress—which was a requirement of the client's, so they could make small changes on their own without the need for a developer.<br><br>I stayed on top of deadlines and managed the client's expectations, keeping them abreast of progress, and ultimately delivering a site with which he was very satisfied.",
+        'description': "For a freelance job, I built this simple website using Wordpress—which was a requirement of the client's, so they could make small changes on their own without the need for a developer.<br><br>I stayed on top of deadlines and managed the client's expectations, keeping them abreast of progress, and ultimately delivered a site with which he was very satisfied.",
         'tags': ['jQuery','HTML','CSS','Wordpress'],
         'url': 'https://www.europeanautoreseda.com/'
       },
@@ -110,13 +122,6 @@
         'tags': ['MySQL','javascript','HTML','CSS','Shopify'],
         'url': 'https://www.karinesultan.com/'
       },
-      'sgl': {
-        'project': 'Stargate Studios Library',
-        'type': 'website',
-        'description': "Although this project is still a work-in-progress, Stargate Studios' employees and clients are actively using it as a convenient way to access the company's vast stock footage library.<br><br>The site was originally created nearly 10 years ago, and it was unusable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, removing security vulnerabilities, improving frontend javascript performance, and adding cross-browser compatibility (it still doesn't work on iOS, but that will change soon).",
-        'tags': ['MySQL','jQuery','Backbone','node.js','HTML','CSS','Python','Bash'],
-        'url': 'http://library.stargatestudios.net/'
-      }
     }
     const tag_colors = {
       'MySQL': [61,110,148],
@@ -136,14 +141,14 @@
       img.src = url;
     }
     for (element in data) {
-      preloadImage('img/'+element+'.png');
+      preloadImage('img/'+element+'.webp');
     }
     document.addEventListener('DOMContentLoaded', function(event) { 
       var html = '';
       var data_count = Object.keys(data).length;
       var element_height = 100/data_count;
       for (element in data) {
-        html += '<div class="web-example" style="height: '+element_height+'%" onclick="click_sidebar(\''+element+'\')"><div class="overlay"><div class="overlay-text"><span class="overlay-type">'+data[element]['type']+': </span>'+data[element]['project']+'</div></div><img src="img/'+element+'.png"></div>';
+        html += '<div class="web-example" style="background-image:url(\'img/'+element+'.webp\');height:'+element_height+'%" onclick="click_sidebar(\''+element+'\')"><div class="overlay"><div class="overlay-text"><span class="overlay-type">'+data[element]['type']+': </span>'+data[element]['project']+'</div></div></div>';
       }
       document.querySelectorAll('.web-example').forEach(web_example => {
         web_example.style.height = (100/elements)+'%';
@@ -170,7 +175,12 @@
     function load_sidebar(id) {
       document.getElementById('sidebar-title').innerHTML = data[id]['project'];
       document.getElementById('sidebar-description').innerHTML = data[id]['description'];
-      document.getElementById('visit-site').onclick = function(){window.open(data[id]['url'], '_blank').focus()};
+      if (data[id]['url']) {
+        document.getElementById('visit-site').onclick = function(){window.open(data[id]['url'], '_blank').focus()};
+        document.getElementById('visit-site').style.display = 'block';
+      } else {
+        document.getElementById('visit-site').style.display = 'none';
+      }
       var tag_html = '';
       data[id]['tags'].forEach(tag => {
         var font_color = '#efefef';

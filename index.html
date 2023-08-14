@@ -1,220 +1,32 @@
 <head>
-  <title>Henry Mann Portfolio</title>
-  <link rel="icon" href="bucket.ico">
-	<style type="text/css">
-		html, body {
-		  height: 100%;
-		}
-		body {
-			background: rgb(38,38,38);
-			margin: 0;
-      font-family: 'Helvetica', 'Arial', sans-serif;
-      color: #efefef;
-		}
-		#portfolio-container {
-      transition: margin-right 0.3s ease;
-		}
-		.web-example {
-	    position: relative;
-      width: 100%;
-	    cursor: pointer;
-      background-size: cover;
-		}
-		#sidebar {
-	    width: 30%;
-	    background: #3a353f;
-	    height: 100%;
-	    position: fixed!important;
-	    z-index: 1;
-	    overflow: auto;
-	    top: 0;
-	    right: -30%;
-      transition: right 0.3s ease;
-		}
-    #sidebar-title {
-      width: 100%;
-      background: black;
-      text-align: center;
-      padding: 10px 0;
-      font-size: 22px;
-    }
-    #sidebar-description {
-      border-radius: 13px;
-      margin: 14px;
-      border: 1px solid #1f1c21;
-      padding: 9px 12px 12px 12px;
-      font-weight: lighter;
-      color: #dbdbdb;
-    }
-    #tags {
-      margin: 6px;
-    }
-    #tags>div {
-      border-radius: 20px;
-      padding: 3px 6px;
-      font-size: 10px;
-      margin: 0 3px;
-      display: inline-block;
-    }
-    #visit-site {
-      background: #895bb3;
-      border-radius: 5px;
-      margin: 15px auto;
-      width: fit-content;
-      padding: 5px 15px;
-      cursor: pointer;
-    }
-    .overlay {
-      background: rgb(56 56 56 / 50%);
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      height: 100%;
-      opacity: 0%;
-      text-align: center;
-      transition: opacity 0.2s ease;
-    }
-    .overlay:hover {
-      opacity: 100%;
-    }
-    .overlay-type {
-      color: #aa9edc;
-    }
-    .overlay-text {
-      top: 50%;
-      width: fit-content;
-      position: absolute;
-      font-size: 2em;
-      background: #18181e69;
-      border-radius: 10px;
-      transform: translate(-50%, -50%);
-      padding: 17px 43px;
-      left: 50%;
-      text-wrap: nowrap;
-    }
-	</style>
-	<script>
-    const data = {
-      'sgl': {
-        'project': 'Stargate Studios Library',
-        'type': 'website',
-        'description': "Although this project is still a work-in-progress, Stargate Studios' employees and clients are actively using the site as a convenient way to access the company's vast stock footage library.<br><br>The site was built nearly 10 years ago, and it was barely usable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, removing security vulnerabilities, improving frontend javascript performance, and optimizing the workflow with Python and bash scripts. There are still many bugs to fix (e.g. still doesn't work on iOS) and features to add (like search filtering), but it's come a long way in terms of reliability and usability since I started on it.",
-        'tags': ['MySQL','jQuery','Backbone','node.js','HTML','CSS','Python','Bash'],
-        'url': 'http://library.stargatestudios.net/'
-      },
-      'sgc': {
-        'project': 'Stargate PanoCam',
-        'type': 'desktop app',
-        'description': 'In collaboration with Sony, I built a C++ camera control app which has increased virtual production plate shooting efficiency by 30% and substantially reduced the chance of operator error.<br><br>Built the core functionality in only two months. In the following 6 months, I’ve added 20 major features.<br><br>Implemented asynchronous serial communication to allow for GPS logging, which allows us to catalog every shoot by location, making it easier to sell footage to clients',
-        'tags': ['C++', 'wxWidgets', 'Bash']
-      },
-      'eas': {
-        'project': 'European Auto Service',
-        'type': 'website',
-        'description': "For a freelance job, I built this simple website using Wordpress—which was a requirement of the client's, so they could make small changes on their own without the need for a developer.<br><br>I stayed on top of deadlines and managed the client's expectations, keeping them abreast of progress, and ultimately delivered a site with which he was very satisfied.",
-        'tags': ['jQuery','HTML','CSS','Wordpress'],
-        'url': 'https://www.europeanautoreseda.com/'
-      },
-      'ksj': {
-        'project': 'Karine Sultan Jewelry',
-        'type': 'website',
-        'description': "I redesigned multiple aspects of this website, changing its look and adding new features. I also wrote software that allowed the employees to make a specific set of changes to the underlying database.",
-        'tags': ['MySQL','javascript','HTML','CSS','Shopify'],
-        'url': 'https://www.karinesultan.com/'
-      },
-    }
-    const tag_colors = {
-      'MySQL': [61,110,148],
-      'jQuery': [9,105,173],
-      'javascript': [168,21,21],
-      'Backbone': [74,112,192],
-      'node.js': [131,205,42],
-      'HTML': [220,74,37],
-      'CSS': [37,75,222],
-      'Python': [247,201,63],
-      'Bash': [177,59,145],
-      'Shopify': [149,191,71],
-      'Wordpress': [0,0,0]
-    }
-    async function preloadImage(url) {
-      var img = new Image();
-      img.src = url;
-    }
-    for (element in data) {
-      preloadImage('img/'+element+'.webp');
-    }
-    document.addEventListener('DOMContentLoaded', function(event) { 
-      var html = '';
-      var data_count = Object.keys(data).length;
-      var element_height = 100/data_count;
-      for (element in data) {
-        html += '<div class="web-example" style="background-image:url(\'img/'+element+'.webp\');height:'+element_height+'%" onclick="click_sidebar(\''+element+'\')"><div class="overlay"><div class="overlay-text"><span class="overlay-type">'+data[element]['type']+': </span>'+data[element]['project']+'</div></div></div>';
-      }
-      document.querySelectorAll('.web-example').forEach(web_example => {
-        web_example.style.height = (100/elements)+'%';
-      });
-      document.getElementById('portfolio-container').innerHTML = html;
-    });
-    var sidebar_open = false;
-    var current_sidebar = null;
-		function click_sidebar(id) {
-      if (sidebar_open) {
-        if (current_sidebar == id) {
-          close_sidebar();
-          sidebar_open = false;
-        } else {
-          load_sidebar(id);
-        }
-      } else {
-        sidebar_open = true;
-        load_sidebar(id);
-        open_sidebar();
-      }
-      current_sidebar = id;
-		}
-    function load_sidebar(id) {
-      document.getElementById('sidebar-title').innerHTML = data[id]['project'];
-      document.getElementById('sidebar-description').innerHTML = data[id]['description'];
-      if (data[id]['url']) {
-        document.getElementById('visit-site').onclick = function(){window.open(data[id]['url'], '_blank').focus()};
-        document.getElementById('visit-site').style.display = 'block';
-      } else {
-        document.getElementById('visit-site').style.display = 'none';
-      }
-      var tag_html = '';
-      data[id]['tags'].forEach(tag => {
-        var font_color = '#efefef';
-        var rgb_bkgd = '210,105,3'
-        if (tag_colors[tag]) {
-          rgb_bkgd = tag_colors[tag].toString();
-          if( tag_colors[tag][0]*0.299 + tag_colors[tag][1]*0.587 + tag_colors[tag][2]*0.114 > 136) {
-            font_color = '#101010';
-          }
-        }
-        tag_html += '<div style="color:'+font_color+';background:rgb('+rgb_bkgd+')">'+tag+'</div>'
-      });
-      document.getElementById('tags').innerHTML = tag_html;
-    }
-    function open_sidebar() {
-      document.getElementById('portfolio-container').style.marginRight = '30%';
-      document.getElementById('sidebar').style.right = '0';
-      document.getElementById('sidebar').style.boxShadow = '0 0 24px 5px #0000007a';
-    }
-    function close_sidebar() {
-      document.getElementById('portfolio-container').style.marginRight = '0';
-      document.getElementById('sidebar').style.right = '-30%';
-      document.getElementById('sidebar').style.boxShadow = 'none';
-    }
-	</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Henry Mann Portfolio</title>
+    <link rel="icon" href="bucket.ico">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
 	<header>
 	</header>
-	<div id="portfolio-container"></div>
-	<div id="sidebar">
-   <div id="sidebar-title"></div>
-   <div id="tags"></div>
-   <div id="visit-site">Visit Site</div>
-   <div id="sidebar-description"></div>
-  </div>
+    <div id="img-overlay" onclick="close_image()">
+        <div id="grey-overlay"></div>
+        <div id="img-container">
+          <img>
+          <span></span>
+        </div>
+    </div>
+    <div id="portfolio-list"></div>
+    <div id="sidebar">
+        <div id="sidebar-title">
+            <div id="close-button" onclick="close_sidebar()"></div>
+            <span></span>
+            <div id="tags"></div>
+        </div>
+        <div id="thumb" onclick="open_image()"></div>
+        <div id="visit-site">Visit Site</div>
+        <div id="box-container">
+            <div id="sidebar-description" class="box"></div>
+        </div>
+    </div>
 </body>

@@ -4,12 +4,12 @@ const data = {
     'sgl': {
         'project': 'Stargate Studios Library',
         'type': 'website',
-        'description': "Although this project is still a work-in-progress, Stargate Studios' employees and clients are actively using the site as a convenient way to access the company's vast stock footage library.<br><br>The site was built nearly 10 years ago, and it was barely usable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, removing security vulnerabilities, improving frontend javascript performance, and optimizing the workflow with Python and bash scripts. There are still many bugs to fix (e.g. still doesn't work on iOS) and features to add (like search filtering), but it's come a long way in terms of reliability and usability since I started on it.",
+        'description': "This site was originally built 10 years ago, and it was barely usable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, rethinking the architecture of the entire codebase, removing security vulnerabilities, modernizing the look of the site, improving frontend javascript performance, and optimizing the workflow with Python and bash scripts. It's come a long way in terms of reliability and usability since I started on it, and Stargate Studios' employees and clients are now actively using the site as a convenient way to access the company's vast stock footage library.",
         'tags': ['MySQL','jQuery','Backbone','node.js','HTML','CSS','Python','Bash'],
         'url': 'http://library.stargatestudios.net/',
         'links': [
             {
-                'title': 'logging software to add new clips to the library (also a work-in-progress)',
+                'title': 'logging software to add new clips to the library (currently a work-in-progress)',
                 'link': 'logger.webp' 
             }]
     },
@@ -62,8 +62,9 @@ const tag_colors = {
 }
 var img_overlay;
 function resizeCalc() {
+    const fontSize = window.innerWidth / 703 + 'em';
     document.querySelectorAll('.overlay-text').forEach(element => {
-        element.style.fontSize = window.innerWidth/703+'em';
+        element.style.fontSize = fontSize;
     });
 }
 function throttle(func, limit) {

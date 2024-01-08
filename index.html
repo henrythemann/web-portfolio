@@ -4,13 +4,13 @@
     <title>Henry Mann Portfolio</title>
     <link rel="icon" href="bucket.ico">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="main.js"></script>
+    <script src="main.min.js"></script>
 </head>
 <body>
 	<header>
 	</header>
-    <div id="img-overlay" onclick="close_image()">
-        <div id="grey-overlay"></div>
+    <div id="grey-overlay" onclick="closeSidebar()"></div>
+    <div id="img-overlay" onclick="closeImage()">
         <div id="img-container">
           <img>
           <span></span>
@@ -19,12 +19,12 @@
     <div id="portfolio-list"></div>
     <div id="sidebar">
         <div id="sidebar-title">
-            <div id="close-button" onclick="close_sidebar()"></div>
+            <div id="close-button" onclick="closeSidebar()"></div>
             <span></span>
             <div id="tags"></div>
         </div>
-        <div id="thumb" onclick="open_image()"></div>
-        <div id="visit-site">Visit Site</div>
+        <div id="thumb" onclick="openImage()"></div>
+        <button id="visit-site">Visit Site</button>
         <div id="box-container">
             <div id="sidebar-description" class="box"></div>
         </div>

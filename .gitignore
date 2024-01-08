@@ -3,6 +3,7 @@
 *.webp
 *.woff
 *.woff2
+*.min.js
 img/convert_to_webp
 upload.sh
 camera-report.html

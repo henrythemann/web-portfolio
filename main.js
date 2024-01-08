@@ -1,22 +1,20 @@
-const sidebar_width = 100;
-var image_open = false;
 const data = {
     'sgl': {
         'project': 'Stargate Studios Library',
         'type': 'website',
-        'description': "This site was originally built 10 years ago, and it was barely usable. It took over 10 seconds to load the page and anywhere between 15-30 seconds to finish loading the search results. This stemmed from a poorly designed SQL database, which I restructured to allow for more efficient queries.<br><br>I've touched every other aspect of the codebase since I embarked on this project in June 2023, rethinking the architecture of the entire codebase, removing security vulnerabilities, modernizing the look of the site, improving frontend javascript performance, and optimizing the workflow with Python and bash scripts. It's come a long way in terms of reliability and usability since I started on it, and Stargate Studios' employees and clients are now actively using the site as a convenient way to access the company's vast stock footage library.",
+        'description': "In June 2023, I undertook the ambitious task of revitalizing a decade-old website for Stargate Studios, transforming it from a sluggish and outdated platform into a sleek, efficient, and user-friendly resource. Initially plagued by performance issues, including page load times exceeding 10 seconds and search results taking up to 30 seconds to appear, the site presented a significant challenge. My first order of business was to tackle the underlying cause: a poorly designed SQL database. By reengineering the database structure (including splitting individual columns using machine learning and natural language processing), I achieved more efficient query performance, drastically reducing load times and enhancing the overall user experience.<br><br>My role in this project extended far beyond database optimization. I conducted a thorough overhaul of the entire codebase, implementing modern architectural practices to ensure scalability and maintainability. This comprehensive redevelopment involved not only enhancing the site's aesthetics but also fortifying its security posture by addressing and eliminating vulnerabilities.<br><br>A key focus was on improving the front-end JavaScript performance, ensuring a smooth and responsive interface. Additionally, I streamlined the development workflow using Python and bash scripts, significantly boosting productivity and operational efficiency.<br><br>The impact of these improvements has been profound. The revamped site now stands as a testament to reliability and usability, earning active engagement from both employees and clients of Stargate Studios. It has become an indispensable tool in accessing the company's extensive stock footage library, marking a successful transition from a barely usable site to a vital asset for the organization.",
         'tags': ['MySQL','jQuery','Backbone','node.js','HTML','CSS','Python','Bash'],
         'url': 'http://library.stargatestudios.net/',
         'links': [
             {
-                'title': 'logging software to add new clips to the library (currently a work-in-progress)',
+                'title': 'companion logging software to add new clips to the library (currently a work-in-progress)',
                 'link': 'logger.webp' 
             }]
     },
     'sgc': {
         'project': 'Stargate PanoCam',
         'type': 'desktop app',
-        'description': 'Stargate Studios initially brought me on as a developer to build them a camera control app. The company shoots virtual production plates using 9 or more cameras simultaneously, all of which are mounted to a car, and without a way to control all the cameras at once, a camera person would have to get out of the car to adjust the settings on each camera. This was not only slow, but also error-prone and sometimes unsafe.<br><br>In just two months, I built out the core functionality of the app, allowing an operator to connect and disconnect multiple cameras and to adjust all relevant camera settings. Since then, I’ve added major features, such as the ability to log details of the shoot, along with GPS tracking to map the driver\'s exact route. These features are crucial for keeping these shoots organized amongst the company’s 300,000+ clip library.<br><br>We use Sony cameras for our plate shoots, and we\'ve worked alongside the Sony team to implement the features we needed for this app. I even flew to Japan in 2022 to meet their developer team and discuss the Sony SDK codebase and upcoming features. ',
+        'description': "When Stargate Studios brought me on to develop a sophisticated camera control application, I embraced the opportunity to revolutionize their virtual production process. The studio, known for its advanced use of technology in capturing virtual production plates, faced significant challenges with its existing setup. Managing multiple cameras mounted on a vehicle for shoots was cumbersome, time-consuming, and fraught with potential for errors and safety concerns.<br><br>Within a mere two months, I designed and deployed the core functionality of a groundbreaking app that fundamentally transformed their operations. This app enabled seamless connection and disconnection of multiple cameras, along with comprehensive control over all essential camera settings from a single interface. This innovation not only streamlined the shooting process but also markedly reduced the risk of errors and enhanced on-set safety.<br><br>My contributions, however, extended far beyond these initial functionalities. Recognizing the need for meticulous organization in handling the studio's extensive library of over 300,000 clips, I introduced pivotal features such as detailed shoot logging and precise GPS tracking to record the driver's route. These additions have been instrumental in maintaining order and efficiency in the studio's vast and complex operations.<br><br>A highlight of this project was my collaboration with Sony. Utilizing their cameras for our plate shoots, I worked alongside the Sony team to tailor the app's features to our specific needs. This collaboration included a trip to Japan in 2022 to engage directly with Sony's developer team, discussing the intricacies of their SDK and upcoming functionalities. This experience not only enriched the app's capabilities but also underscored my ability to work effectively with international tech teams, adapting to evolving technological landscapes.<br><br>Overall, my work on this project has had a substantial impact on Stargate Studios' production efficiency and quality, marking a significant leap forward in their use of technology for film-making.",
         'tags': ['C++', 'wxWidgets', 'Bash'],
         'links': [
             {
@@ -32,22 +30,30 @@ const data = {
                 'link': 'sony_team.webp'
             }]
     },
-    'eas': {
-        'project': 'European Auto Service',
-        'type': 'website',
-        'description': "For a freelance job, I built this simple website using Wordpress—which was a requirement of the client's, so they could make small changes on their own without the need for a developer.<br><br>I stayed on top of deadlines and managed the client's expectations, keeping them abreast of progress, and ultimately delivered a site with which they were very satisfied.",
-        'tags': ['jQuery','HTML','CSS','Wordpress'],
-        'url': 'https://www.europeanautoreseda.com/'
+    'bse': {
+        'project': 'The Mighty Broach',
+        'type': 'videogame',
+        'description': "I am currently developing an engaging and nostalgic 2D platformer game during my free time, which is an exciting foray into the realm of game design and retro aesthetics. In this game, players embark on an adventure as a cat-turned-superhero, tasked with the thrilling challenge of combating villains in a dynamic dystopian setting.<br><br>Leveraging the capabilities of Tilengine, a specialized 2D graphics engine known for its scanline-based rendering, I am meticulously crafting an experience that pays homage to classic retro arcade games. This choice of technology not only enhances the visual appeal of the game with its vintage charm but also aligns perfectly with the gameplay mechanics, offering a seamless and immersive experience reminiscent of the golden era of arcade gaming.<br><br>While still a work in progress, this project is a testament to my creativity and technical skills. It showcases my ability to blend engaging storytelling with technical prowess, creating a game that is both visually appealing and enjoyable to play. As I continue to refine and expand the game's features, I am focused on delivering a high-quality, nostalgic experience that resonates with fans of retro gaming and innovative platformers alike.",
+        'tags': ['C', 'Tilengine', 'SDL2'],
+        'img_y_offset': '65%',
+    },
+    'pjp': {
+        'project': 'Flashcards',
+        'type': 'desktop app',
+        'description': "In my never-ending quest to master Japanese, I identified a gap in existing flashcard web applications. To fill the gap, I developed a cross-platform desktop app that features the ability to batch import terms—a crucial time-saving feature, and text-to-speech playback, simultaneously stimulating your listening and reading comprehension.<br><br>While the application itself is modest, it highlights my ability to engineer practical solutions to problems and shows how I put my programming abilities to use whenever I can in my day-to-day life.",
+        'tags': ['Python'],
     },
     'ksj': {
         'project': 'Karine Sultan Jewelry',
         'type': 'website',
-        'description': "I redesigned multiple aspects of this website, changing its look and adding new features. I also wrote software that allowed the employees to make a specific set of changes to the underlying database.",
-        'tags': ['MySQL','javascript','HTML','CSS','Shopify'],
+        'description': "During my college years, I held a web developer role at a boutique jewelry company, where I spearheaded a comprehensive redesign of their online presence. This project entailed a thoughtful overhaul of the website's aesthetics and functionality. I introduced new features that not only elevated the brand's digital footprint but also streamlined the user's journey, contributing to an improved online shopping experience.<br><br>Beyond the front-end development, I developed an intuitive, user-friendly software application equipped with a graphical user interface (GUI). This tool was specifically designed to empower the company's non-technical staff, enabling them to efficiently update and manage the product database. This aspect of my work played a crucial role in simplifying internal processes, thereby improving operational efficiency.<br><br>My tenure with this jewelry company was marked by a keen focus on creating user-centric digital solutions that align with business objectives, demonstrating my ability to blend technical acumen with an understanding of real-world business needs.",
+        'tags': ['MySQL','javascript','HTML','CSS'],
         'url': 'https://www.karinesultan.com/'
     },
 }
-const tag_colors = {
+const sidebarWidth = 100;
+var imageOpen = false;
+const tagColors = {
     'MySQL': [61,110,148],
     'jQuery': [9,105,173],
     'javascript': [168,21,21],
@@ -57,10 +63,10 @@ const tag_colors = {
     'CSS': [37,75,222],
     'Python': [247,201,63],
     'Bash': [177,59,145],
-    'Shopify': [149,191,71],
-    'Wordpress': [0,0,0]
+    'Tilengine': [54,105,209],
+    'C': [74,32,246],
 }
-var img_overlay;
+var imgOverlay;
 function resizeCalc() {
     const fontSize = window.innerWidth / 703 + 'em';
     document.querySelectorAll('.overlay-text').forEach(element => {
@@ -83,48 +89,47 @@ async function preloadImage(url) {
     var img = new Image();
     img.src = url;
 }
-for (element in data) {
+for (let element in data) {
     preloadImage('img/'+element+'.webp');
 }
 document.addEventListener('DOMContentLoaded', function(event) { 
     var html = '';
-    for (element in data) {
-        html += '<div class="example" style="background-image:url(\'img/'+element+'.webp\')" onclick="click_example(\''+element+'\')"><div class="overlay"><div class="overlay-text"><span class="overlay-type">'+data[element]['type']+': </span>'+data[element]['project']+'</div></div></div>';
+    for (let element in data) {
+        html += `<div class="example" style="background-image:url('img/${element}.webp'); background-position-y: ${data[element]['img_y_offset'] || '0%'}" onclick="clickExample('${element}')"><div class="overlay"><div class="overlay-text"><span class="overlay-type">${data[element]['type']}: </span><span class="helvetica">${data[element]['project']}</span></div></div></div>`;
     }
     document.getElementById('portfolio-list').innerHTML = html;
     window.addEventListener('resize', throttle(function() {
         resizeCalc();
     }, 100));
-    document.getElementById('sidebar').style.width = sidebar_width+'%';
-    document.getElementById('sidebar').style.right = '-'+sidebar_width+'%';
+    document.getElementById('sidebar').style.right = '-'+sidebarWidth+'%';
     resizeCalc();
     addEventListener("keyup", (event) => {
         if (event.key == 'Escape') {
-            if (image_open) {
-                close_image();
+            if (imageOpen) {
+                closeImage();
             } else {
-                close_sidebar();
+                closeSidebar();
             }
         }
     });
-    img_overlay = document.querySelector("#img-overlay");
+    imgOverlay = document.querySelector("#img-overlay");
 });
-var sidebar_open = false;
-var current_example = null;
-function click_example(id) {
-    if (sidebar_open) {
-        if (current_example == id) {
-            close_sidebar();
+var sidebarOpen = false;
+var currentExample = null;
+function clickExample(id) {
+    if (sidebarOpen) {
+        if (currentExample == id) {
+            closeSidebar();
         } else {
-            load_sidebar(id);
+            loadSidebar(id);
         }
     } else {
-        load_sidebar(id);
-        open_sidebar();
+        loadSidebar(id);
+        openSidebar();
     }
-    current_example = id;
+    currentExample = id;
 }
-function load_sidebar(id) {
+function loadSidebar(id) {
     document.querySelector('#sidebar-title>span').innerHTML = data[id]['project'];
     document.getElementById('sidebar-description').innerHTML = data[id]['description'];
     if (data[id]['url']) {
@@ -147,63 +152,72 @@ function load_sidebar(id) {
             if (link['link'].endsWith('.html')) {
                 html = '<a href="'+link['link']+'" target="_blank">'+link['title']+'</a>';
             } else if (link['link'].endsWith('.webp')) {
-                html = '<a onclick="open_image(\''+link['link']+'\',\''+link['title']+'\')">'+link['title']+'</a>';
+                html = '<a onclick="openImage(\''+link['link']+'\',\''+link['title']+'\')">'+link['title']+'</a>';
             }
             gallery.innerHTML = html;
             document.getElementById('box-container').appendChild(gallery);
         });
     }
-    var tag_html = '';
+    var tagHtml = '';
     data[id]['tags'].forEach(tag => {
-        var font_color = '#efefef';
-        var rgb_bkgd = '210,105,3'
-        if (tag_colors[tag]) {
-            rgb_bkgd = tag_colors[tag].toString();
-            if( tag_colors[tag][0]*0.299 + tag_colors[tag][1]*0.587 + tag_colors[tag][2]*0.114 > 136) {
-                font_color = '#101010';
+        var fontColor = '#efefef';
+        var rgbBkgd = '210,105,3'
+        if (tagColors[tag]) {
+            rgbBkgd = tagColors[tag].toString();
+            if( tagColors[tag][0]*0.299 + tagColors[tag][1]*0.587 + tagColors[tag][2]*0.114 > 136) {
+                fontColor = '#101010';
             }
         }
-        tag_html += '<div style="color:'+font_color+';background:rgb('+rgb_bkgd+')">'+tag+'</div>'
+        tagHtml += '<div style="color:'+fontColor+';background:rgb('+rgbBkgd+')">'+tag+'</div>'
     });
-    document.getElementById('tags').innerHTML = tag_html;
+    document.getElementById('tags').innerHTML = tagHtml;
     document.getElementById('thumb').style.backgroundImage = 'url(img/'+id+'.webp)';
+    document.getElementById('thumb').style.backgroundPositionY = data[id]['img_y_offset'] || '0%';
 }
-function open_sidebar() {
-    sidebar_open = true;
-    document.getElementById('portfolio-list').style.marginRight = sidebar_width+'%';
-    document.getElementById('sidebar').style.right = '0';
-    document.getElementById('sidebar').style.boxShadow = '0 0 24px 5px #0000007a';
+function openSidebar() {
+    sidebarOpen = true;
+    document.getElementById('sidebar').classList.add('visible'); 
+    // reset scroll position
+    document.getElementById('sidebar').scrollTop = 0;
+    // move grey-overlay to behind sidebar and show it
+    document.getElementById('grey-overlay').style.zIndex = '1';
+    document.getElementById('grey-overlay').style.display = 'block';
+    // prevent body from scrolling
+    document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
 }
-function close_sidebar() {
-    sidebar_open = false;
-    document.getElementById('portfolio-list').style.marginRight = '0';
-    document.getElementById('sidebar').style.right = '-'+sidebar_width+'%';
-    document.getElementById('sidebar').style.boxShadow = 'none';
+function closeSidebar() {
+    sidebarOpen = false;
+    document.getElementById('sidebar').classList.remove('visible'); 
+    document.getElementById('grey-overlay').style.display = 'none';
+    // document.getElementById('portfolio-list').style.marginRight = '0';
+    document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
 }
-function open_image(img, description) {
+function openImage(img, description) {
     if (!img) {
-        document.querySelector('#img-overlay img').src = 'img/'+current_example+'.webp';
+        document.querySelector('#img-overlay img').src = 'img/'+currentExample+'.webp';
         document.querySelector('#img-overlay span').textContent = 'screenshot of project';
     } else {
         document.querySelector('#img-overlay img').src = 'img/'+img;
         document.querySelector('#img-overlay span').textContent = description;
     }
+    document.getElementById('grey-overlay').style.zIndex = '3';
     document.getElementById('img-overlay').style.display = 'block';
     const grey_keyframes = [
         { opacity: "0%" },
         { opacity: "100%" }
         ];
-    img_overlay.animate(grey_keyframes, 200);
-    image_open = true;
+    imgOverlay.animate(grey_keyframes, 200);
+    imageOpen = true;
 }
-function close_image() {
+function closeImage() {
     const grey_keyframes = [
         { opacity: "100%" },
         { opacity: "0%" }
         ];
-    const animation = img_overlay.animate(grey_keyframes, 200);
+    const animation = imgOverlay.animate(grey_keyframes, 200);
     animation.onfinish = () => {
         document.getElementById('img-overlay').style.display = 'none';
     };
-    image_open = false;
+    document.getElementById('grey-overlay').style.zIndex = '2';
+    imageOpen = false;
 }

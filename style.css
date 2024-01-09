@@ -139,6 +139,11 @@ a:hover {
   background-position: center;
   background-repeat: no-repeat;
 }
+#box-container {
+  padding-bottom: 20px;
+  max-width: 650px;
+  margin: 0 auto;
+}
 #sidebar-description {
   font-weight: lighter;
 }
@@ -264,9 +269,6 @@ span.helvetica {
   border-radius: 15px;
   padding: 5px 12px;
 }
-#box-container {
-  padding-bottom: 20px;
-}
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -282,13 +284,6 @@ span.helvetica {
 ::-webkit-scrollbar-track {
   border-radius: 15px;
   background: var(--background-color);
-}
-@media all and (min-width:650px) {
-    .box {
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
-  }
 }
 @media screen and (max-width: 430px) {
   #close-button {

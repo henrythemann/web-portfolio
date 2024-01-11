@@ -1,0 +1,223 @@
+/*
+button {
+  outline: none;
+  border: none;
+  font-family: 'VAG Rounded';
+}
+div {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+a {
+  text-decoration: none;
+  color: #3250ff;
+  cursor: pointer;
+} */
+#windowBorder {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  border: 5vw solid var(--background-color);
+  box-shadow: inset 0 0 0 min(.27vw, 2px) var(--font-color);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  pointer-events: none;
+}
+#boxContainer a:hover {
+  background: #3250ff;
+  color: #ffdf00;
+}
+#portfolioList a:hover .exampleText{
+  color: #1b43b1;
+}
+#portfolioList {
+  transition: margin-right 0.3s ease;
+}
+.example {
+  width: 78vw;
+  margin: 0 auto;
+  height: min(20vw, 250px);
+  color: var(--font-color);
+  font-size: min(11vw, 10em);
+  text-wrap: nowrap;
+  border-top: min(.4vw, 3px) solid var(--font-color);
+  text-align: center;
+  position: relative;
+  transition: font-size 0.1s;
+}
+a:first-child > .example {
+  border-top: none;
+  margin-top: 3vw;
+}
+.exampleText {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  transition: color 0.2s ease;
+}
+#globe {
+  width: 100%;
+  text-align: center;
+  margin-top: 24vw;
+}
+#globe > img {
+  max-width: 300px;
+  width: 20vw;
+}
+@media (prefers-color-scheme: dark) {
+  #globe > img {
+    filter: invert(1);
+  }
+}
+#footer {
+  height: 34vw;
+}
+#sidebarTitle {
+  width: 98%;
+  background: var(--background-color);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 22px;
+  color: var(--font-color);
+  border-bottom: 1px solid #b3b3b3;
+  margin: 0 2%;
+}
+#sidebar-description {
+  font-weight: lighter;
+}
+.box {
+  padding: 9px 12px 12px 12px;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  margin: 0 14px 0 14px;
+}
+.box:first-child {
+  margin-top: 14px;
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+}
+.box:last-child {
+  border-bottom: 1px solid var(--border-color);
+  border-bottom-right-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+#tags {
+  margin: 6px;
+}
+#tags>div {
+  border-radius: 20px;
+  padding: 3px 6px;
+  font-size: 10px;
+  margin: 3px;
+  display: inline-block;
+}
+#thumb {
+  cursor: pointer;
+  height: 200px;
+  transition: transform 0.2s ease;
+  background-position-x: center;
+}
+#thumb:hover {
+  transform: scale(1.05);
+}
+#visitSite {
+  background: #3250ff;
+  color: #ffdf00;
+  font-size: 1.15em;
+  border-radius: 5px;
+  margin: 15px auto;
+  width: fit-content;
+  padding: 5px 55px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#visit-site:hover {
+  background: #3d5bfd;
+}
+.overlay {
+  background-color: rgb(56 56 56 / 50%);
+  position: absolute;
+  width: 100%;
+  top: 6px;
+  bottom: 0;
+  height: 102.5%;
+  opacity: 100%;
+  margin-top: -6px;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+.overlay:hover {
+  background-color: rgb(56 56 56 / 0%);
+}
+.overlayType {
+  color: #3250ff;
+}
+.overlayText {
+  top: 50%;
+  width: fit-content;
+  position: absolute;
+  font-size: 2em;
+  background: var(--background-color);
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  padding: 17px 43px;
+  left: 50%;
+  text-wrap: nowrap;
+  font-weight: 600;
+  letter-spacing: .125em;
+}
+span.helvetica {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#img-overlay {
+  z-index: 3;
+  display: none;
+}
+#img-overlay,
+#img-overlay > div {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#grey-overlay {
+  display: none;
+  background: #343434d6;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+#img-overlay img {
+  z-index: 4;
+  width: auto;
+  height: auto;
+  max-width: 95%;
+  max-height: 88%;
+  box-shadow: 0 0 18px 3px #0000003b;
+}
+#img-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#img-container span {
+  color: #efefef;
+  margin-top: 8px;
+  background: #5f5f5f;
+  border-radius: 15px;
+  padding: 5px 12px;
+}
+#box-container {
+  padding-bottom: 20px;
+}
+
+@media all and (min-width:650px) {
+    .box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+  }
+}

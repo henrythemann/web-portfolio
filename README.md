@@ -1,5 +1,1 @@
-# my portfolio webpage
-This is how you minify the js file
-```
-uglifyjs main.js -o main.min.js -m -c
-```
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).

@@ -1,9 +1,4 @@
 /*
-button {
-  outline: none;
-  border: none;
-  font-family: 'VAG Rounded';
-}
 div {
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,12 +20,8 @@ a {
   z-index: 99;
   pointer-events: none;
 }
-#boxContainer a:hover {
-  background: #3250ff;
-  color: #ffdf00;
-}
 #portfolioList a:hover .exampleText{
-  color: #1b43b1;
+  color: var(--link-highlight-color);
 }
 #portfolioList {
   transition: margin-right 0.3s ease;
@@ -75,67 +66,29 @@ a:first-child > .example {
 #footer {
   height: 34vw;
 }
-#sidebarTitle {
-  width: 98%;
-  background: var(--background-color);
+#projectTitle {
+  width: 90vw;
   text-align: center;
-  padding: 10px 0;
-  font-size: 22px;
+  font-size: min(9vw, 123px);
   color: var(--font-color);
-  border-bottom: 1px solid #b3b3b3;
-  margin: 0 2%;
+  margin: 6.5vw auto 0 auto;
+  transition: color 0.2s ease;
 }
-#sidebar-description {
-  font-weight: lighter;
+#projectTitle:hover {
+  color: var(--link-highlight-color);
 }
-.box {
-  padding: 9px 12px 12px 12px;
-  border: 1px solid var(--border-color);
-  border-bottom: none;
-  margin: 0 14px 0 14px;
-}
-.box:first-child {
-  margin-top: 14px;
-  border-top-right-radius: 13px;
-  border-top-left-radius: 13px;
-}
-.box:last-child {
-  border-bottom: 1px solid var(--border-color);
-  border-bottom-right-radius: 13px;
-  border-bottom-left-radius: 13px;
+#projectDescription {
+  width: 71vw;
+  margin: 3.5vw auto;
+  font-size: 3.3vw;
 }
 #tags {
-  margin: 6px;
+  margin: 2vw;
+  text-align: center;
+  font-size: 2.8vw;
 }
-#tags>div {
-  border-radius: 20px;
-  padding: 3px 6px;
-  font-size: 10px;
-  margin: 3px;
-  display: inline-block;
-}
-#thumb {
-  cursor: pointer;
-  height: 200px;
-  transition: transform 0.2s ease;
-  background-position-x: center;
-}
-#thumb:hover {
-  transform: scale(1.05);
-}
-#visitSite {
-  background: #3250ff;
-  color: #ffdf00;
-  font-size: 1.15em;
-  border-radius: 5px;
-  margin: 15px auto;
-  width: fit-content;
-  padding: 5px 55px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-#visit-site:hover {
-  background: #3d5bfd;
+#tags > .separator {
+  margin: 0 3vw;
 }
 .overlay {
   background-color: rgb(56 56 56 / 50%);
@@ -168,9 +121,6 @@ a:first-child > .example {
   text-wrap: nowrap;
   font-weight: 600;
   letter-spacing: .125em;
-}
-span.helvetica {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 #img-overlay {
   z-index: 3;
@@ -209,9 +159,6 @@ span.helvetica {
   background: #5f5f5f;
   border-radius: 15px;
   padding: 5px 12px;
-}
-#box-container {
-  padding-bottom: 20px;
 }
 
 @media all and (min-width:650px) {

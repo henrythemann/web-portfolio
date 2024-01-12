@@ -11,6 +11,7 @@
   --font-color: #eee;
   --border-color: #2a2a2a;
   --scrollbar-color: #444;
+  --link-highlight-color: #574ee4;
 }
 
 @media (prefers-color-scheme: light) {
@@ -19,6 +20,7 @@
     --font-color: #000;
     --border-color: #1f1c21;
     --scrollbar-color: #999;
+    --link-highlight-color: #1b43b1;
   }
   #close-button::before {
     filter: brightness(0);
@@ -35,7 +37,10 @@ body {
   font-family: 'itc_garamond_stdLtCn', 'Helvetica', 'Arial', sans-serif;
   color: var(--font-color);
 }
-
+button {
+  outline: none;
+  border: none;
+}
 a {
   color: inherit;
   text-decoration: none;

@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Link from 'next/link'; 
+import styles from '../styles/portfolio.module.css';
 import { data } from '../data/data.js';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 
 export default function Home() {
   return (
@@ -11,13 +12,13 @@ export default function Home() {
     <div id={styles.portfolioList}>
       {Object.keys(data).map((key) => (
         <Fragment key={key}>
-        <a href="./${element}">
+        <Link href={`/${key}`}>
           <div className={styles.example}>
             <div className={styles.exampleText}>
               {data[key].project}
             </div>
           </div>
-        </a>
+        </Link>
         </Fragment>
       ))}
     </div>

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { data } from '../data/data.js';
+import Link from 'next/link'; 
 import styles from '../styles/portfolio.module.css';
 import { Fragment } from 'react';
 
@@ -13,19 +14,11 @@ const ProjectPage = ({ projectData }) => {
 
     }
 
-    // styles.thumb.style.backgroundImage = 'url(img/'+projectData+'.webp)';
-    
     return (
         <>
-        <div id={styles.greyOverlay}></div>
-        <div id={styles.imgOverlay}>
-            <div id={styles.imgContainer}>
-            <span></span>
-            </div>
-        </div>
         <div id={styles.windowBorder}></div>
         <div id={styles.projectTitle}>
-        <a href={projectData.url || undefined} target={projectData.url ? "_blank" : undefined} rel={projectData.url ? "noopener noreferrer" : undefined}>{projectData.project}</a>
+            <a href={projectData.url || undefined} className={projectData.url ? styles.projectLink : undefined} target={projectData.url ? "_blank" : undefined} rel={projectData.url ? "noopener noreferrer" : undefined}>{projectData.project}</a>
         </div>
         <div id={styles.tags}>
             {projectData.tags.map((tag, idx) => (<Fragment key={idx}>
@@ -33,6 +26,11 @@ const ProjectPage = ({ projectData }) => {
             </Fragment>))}
         </div>
         <div dangerouslySetInnerHTML={{ __html: projectData.description }} id={styles.projectDescription}></div>
+        <div id={styles.projectImage}>
+            <Link href={`/img/${projectData.key}`}><img onClick={openImage} src={`img/${projectData.key}.webp`} alt={projectData.project} /></Link>
+            {projectData.url && (<a id={styles.visitSite} href={projectData.url} target="_blank" rel="noopener noreferrer">visit site</a>)}
+        </div>
+        <div id={styles.footer}></div>
         </>
     );
 };
@@ -48,8 +46,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     // Fetch the project data for a given project key
-    let projectData = data[params.project];
-    projectData.key = params.project;
+    let projectData = {};
+    try {
+        projectData = data[params.project];
+        projectData.key = params.project;
+    } catch (e) {
+        return { notFound: true };
+    }
     
     return { props: { projectData } };
 }

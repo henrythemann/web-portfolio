@@ -12,6 +12,7 @@
   --border-color: #2a2a2a;
   --scrollbar-color: #444;
   --link-highlight-color: #574ee4;
+  --small-font-size: max(2.8vw, 14px);
 }
 
 @media (prefers-color-scheme: light) {

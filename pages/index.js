@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link'; 
 import styles from '../styles/portfolio.module.css';
 import { data } from '../data/data.js';
@@ -7,7 +6,7 @@ import { Fragment } from 'react';
 export default function Home() {
   return (
     <>
-    <Head></Head>
+    
     <div id={styles.windowBorder}></div>
     <div id={styles.portfolioList}>
       {Object.keys(data).map((key) => (

@@ -173,9 +173,12 @@ a:first-child > .example {
     display: block;
     left: auto;
     text-align: center;
-    transform: translateX(calc(-47% + 1vw));
+    left: 50%;
+    transform: translateX(-50%);
   }
   .linksDivider {
-    transform: translateX(-22%);
+    position: static;
+    display: block;
+    margin-top: 1vw;
   }
 }

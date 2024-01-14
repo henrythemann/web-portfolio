@@ -30,6 +30,14 @@ const ProjectPage = ({ projectData }) => {
             <Link href={`/img/${projectData.key}`}><img onClick={openImage} src={`img/${projectData.key}.webp`} alt={projectData.project} /></Link>
             {projectData.url && (<a id={styles.visitSite} href={projectData.url} target="_blank" rel="noopener noreferrer">visit site</a>)}
         </div>
+        {projectData.links && 
+        <div className={styles.linksContainer}>
+            <span>links</span>
+            <span className={styles.linksDivider}></span>
+            <span className={styles.linksList}>
+                {projectData.links.map((item, idx) => (<Fragment key={idx}>{idx === 0 && <span className={styles.linksSpacer}></span>}<br></br><Link href={item.link}>{item.title}</Link></Fragment>))}
+            </span>
+        </div>}
         <div id={styles.footer}></div>
         </>
     );

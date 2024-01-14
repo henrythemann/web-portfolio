@@ -1,7 +1,9 @@
 import '../styles/global.css';
 import Head from 'next/head';
+import useScrollRestoration from "../hooks/useScrollRestoration";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
+  useScrollRestoration(router);
   return (<>
   <Head>
       <title>Henry Mann Portfolio</title>
